@@ -1,4 +1,3 @@
-import react from 'react';
 import styled from 'styled-components'
 
 export const Title = styled.div`
@@ -14,7 +13,7 @@ export const Title = styled.div`
     cursor: pointer;
     margin-bottom: 0px;
 `
-export const TitleValue = styled.text `
+export const TitleValue = styled.text`
     color: #00687F;
     font-family: Barlow;
     font-style: normal;
@@ -36,7 +35,7 @@ export const Icon = styled.div`
     padding-right: 1rem;
 `
 
-export const Container = styled.div`
+export const MainContent = styled.div`
     background-color:#E0E6EE;
     border-radius: 8px;
     padding: 2rem;

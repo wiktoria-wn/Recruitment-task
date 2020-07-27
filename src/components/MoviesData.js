@@ -13,12 +13,12 @@ const imagesPath = {
 class MoviesData extends React.Component  {
 
   constructor () {
-  super()
-  this.state = {
-    open: true,
-    showDetails: false
+    super()
+    this.state = {
+      open: true,
+      showDetails: false
+    }
   }
-}
 
   showPlanet = () => { 
     this.setState(state => ({showDetails: !state.showDetails}))
@@ -27,24 +27,29 @@ class MoviesData extends React.Component  {
   toggleImage = () => {
     this.setState(state => ({ open: !state.open }))
   }
-  
+
+  onIconClick = (e) => {
+    this.toggleImage();
+    this.showPlanet();
+    // var movieId = e.currentTarget.attributes.param.value;
+  }
+
   getImageName = () => this.state.open ? 'openArrow' : 'closeArrow'
 
   render () {
-    const imageName = this.getImageName();
   return (
     <>
-      {MovieDetails.map(el => {
-        const movie = el.data.films;
+      {MovieDetails.map(details => {
+        const movies = details.data.films;
         return (
-          <>{movie.map( i => {
+          <>{movies.map( movie => {
             return (
             <>
             <Title>
-              <TitleValue>{i.title}</TitleValue>
+              <TitleValue>{movie.title}</TitleValue>
               <Icon>
               <img
-                src={imagesPath[imageName]} onClick={this.toggleImage && this.showPlanet}
+                  src={imagesPath[this.getImageName()]} onClick={this.onIconClick} param={movie.id}
               />
               </Icon>
             </Title>

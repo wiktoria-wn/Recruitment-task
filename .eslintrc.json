@@ -1,0 +1,30 @@
+{
+    "env": {
+        "browser": true,
+        "es2020": true
+    },
+    "extends": [
+        "plugin:react/recommended",
+        "standard",
+        "eslint:recommended"
+    ],
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": 11,
+        "sourceType": "module"
+    },
+    "plugins": [
+        "react"
+    ],
+    "rules": {
+        "arrow-spacing":"warn",
+        "space-before-blocks":"warn",
+        "no-constructor-return":"warn",
+        "no-multi-spaces":"warn",
+        "block-spacing":"warn",
+        "brace-style":"warn",
+        "eol-last":"warn"
+    }
+}
