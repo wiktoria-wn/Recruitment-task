@@ -1,6 +1,5 @@
 /* eslint-disable react/jsx-key */
 import React from 'react'
-import PlanetDetails from '../assets/data.json'
 import { Table, Row, Value } from '../PlanetsDataStyles'
 
 class PlanetsData extends React.Component {
@@ -9,32 +8,25 @@ class PlanetsData extends React.Component {
       <>
         <Table>
           <Row primary>
-            <Value primary>Planet Name</Value>
-            <Value>Rotating period</Value>
-            <Value>Orbital period</Value>
-            <Value>Diameter</Value>
-            <Value>Climate</Value>
-            <Value>Surface water</Value>
-            <Value>Population</Value>
+            <Value  bordered primary>Planet Name</Value>
+            <Value bordered>Rotating period</Value>
+            <Value bordered>Orbital period</Value>
+            <Value bordered>Diameter</Value>
+            <Value bordered>Climate</Value>
+            <Value bordered>Surface water</Value>
+            <Value bordered>Population</Value>
           </Row>
-          {PlanetDetails.map(datails => {
-            const planet = datails.data.planets
+          {this.props.planets.map(planet => {
             return (
-              <>{planet.map(planet => {
-                return (
-                  <Row>
-                    <Value primary>{planet.name}</Value>
-                    <Value>{planet.rotationPeriod}</Value>
-                    <Value>{planet.orbitalPeriod}</Value>
-                    <Value>{planet.diameter}</Value>
-                    <Value>{planet.climates}</Value>
-                    <Value>{planet.surfaceWater}</Value>
-                    <Value>{planet.population}</Value>
-                  </Row>
-
-                )
-              })}
-              </>
+              <Row>
+                <Value primary>{planet.name}</Value>
+                <Value>{planet.rotationPeriod}</Value>
+                <Value>{planet.orbitalPeriod}</Value>
+                <Value>{planet.diameter}</Value>
+                <Value>{planet.climates}</Value>
+                <Value>{planet.surfaceWater}</Value>
+                <Value>{planet.population}</Value>
+              </Row>
             )
           })}
         </Table>

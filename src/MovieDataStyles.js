@@ -4,43 +4,48 @@ export const Title = styled.div`
     background: #FFFFFF;
     box-shadow: 0px 2px 1px rgba(196, 196, 196, 0.2);
     border-radius: 4px;
-    margin: 1.25rem auto;
-    width: 46rem;
-    height: 3rem;
-    text-align: left;
-    position: relative;
-    padding: 0 1rem;
+    display: flex;
+    align-items: center;
+    max-width: 720px;
+    height: 38px;
+    left: 235px;
+    top: 208px;
+    margin: 20px 20px 0;
+    padding: 10px;
+    justify-content: space-between;
     cursor: pointer;
-    margin-bottom: 0px;
+
+    @media (max-width: 375px){
+        width: 292px;
+        height: 38px;
+        left: 37px;
+        top: 272px;
+        margin: 10px auto;
+        padding: 10px;
+    }
 `
+
 export const TitleValue = styled.text`
-    color: #00687F;
     font-family: Barlow;
     font-style: normal;
     font-weight: bold;
-    font-size: 1rem;
-    line-height: 1.25rem;
-    position: absolute;
-    top: 50%;
-    transform: translate(0, -50%);
+    font-size: 16px;
+    color: #00687F;
 `
 
-export const Icon = styled.div`
-    position: absolute;
-    top: 50%;
-    left: 100%;
-    transform: translate(-100%, -50%);
-    display: block;
-    float: right;
-    padding-right: 1rem;
+export const Icon = styled.img`
+    border: none;
 `
 
 export const MainContent = styled.div`
-    background-color:#E0E6EE;
+    background: #E0E6EE;
     border-radius: 8px;
-    padding: 2rem;
-    position: absolute;
-    width: 49rem;
-    height: 37rem;
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    max-width: 790px;
+    max-height: auto;
+    left: 205px;
+    top: 96px;
+    padding: 30px 0;
+    margin: 20px auto;
 `

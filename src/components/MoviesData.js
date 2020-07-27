@@ -1,68 +1,74 @@
-import React from 'react';
-import MovieDetails from '../assets/data.json';
-import {Title, TitleValue, Icon} from '../MovieDataStyles';
-import ArrowOpen from '../assets/ARROWOPEN.svg';
-import ArrowClose from '../assets/ARROWCLOSE.svg';
-import PlanetsData from './PlanetsData';
+import React from 'react'
+import MovieDetails from '../assets/data.json'
+import { Title, TitleValue, Icon } from '../MovieDataStyles'
+import ArrowOpen from '../assets/ARROWOPEN.svg'
+import ArrowClose from '../assets/ARROWCLOSE.svg'
+import PlanetsData from './PlanetsData'
 
 const imagesPath = {
   openArrow: ArrowOpen,
   closeArrow: ArrowClose
 }
 
-class MoviesData extends React.Component  {
-
+class MoviesData extends React.Component {
   constructor () {
-    super()
+    super();
     this.state = {
-      open: true,
-      showDetails: false
+      films: this.parseFilmsJson(),
+      openSections: {}
     }
   }
 
-  showPlanet = () => { 
-    this.setState(state => ({showDetails: !state.showDetails}))
+  parseFilmsJson = () => {
+    var films = []
+
+    var allFilms = MovieDetails.data.films;
+    var allPlanets = MovieDetails.data.planets;
+
+    allFilms.forEach(film => {
+      const planets = allPlanets.filter(function (planet) {
+        return planet.filmConnection.films.find((el) => { return el.id === film.id })
+      });
+      films.push({
+        id: film.id,
+        title: film.title,
+        planets: planets
+      });
+    });
+
+    return films;
   }
 
-  toggleImage = () => {
-    this.setState(state => ({ open: !state.open }))
+  onSectionClick = (movieId) => {
+    this.setState({openSections: {
+      [movieId]: this.state.openSections[movieId] ? false : true
+    }});
   }
 
-  onIconClick = (e) => {
-    this.toggleImage();
-    this.showPlanet();
-    // var movieId = e.currentTarget.attributes.param.value;
-  }
+  getImageName = (filmId) => this.shouldDisplay(filmId) ? 'closeArrow' : 'openArrow'
 
-  getImageName = () => this.state.open ? 'openArrow' : 'closeArrow'
+  shouldDisplay = (movieId) => this.state.openSections[movieId] ? true : false;
 
   render () {
-  return (
-    <>
-      {MovieDetails.map(details => {
-        const movies = details.data.films;
-        return (
-          <>{movies.map( movie => {
-            return (
-            <>
-            <Title>
-              <TitleValue>{movie.title}</TitleValue>
-              <Icon>
-              <img
-                  src={imagesPath[this.getImageName()]} onClick={this.onIconClick} param={movie.id}
-              />
-              </Icon>
-            </Title>
-            {this.state.showDetails ? <PlanetsData/> : null}
-            </>
+    return (
+      <>
+        {this.state.films.map(film => {
+          return (
+              <>
+              <Title key={film.id} onClick={() => this.onSectionClick(film.id)}>
+                  <TitleValue>{film.title}</TitleValue>
+                  <Icon
+                      src={imagesPath[this.getImageName(film.id)]}
+                      alt="movie"
+                  />
+                </Title>
+                {this.shouldDisplay(film.id) ? <PlanetsData planets={film.planets}/> : null}
+              </>
             )
-          })}
-          </>
-        )
-      })}
-    </>
-  );
-}
+        })}
+      </>
+    )
+  }
 }
 
-export default MoviesData;
+export default MoviesData
