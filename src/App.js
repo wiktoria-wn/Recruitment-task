@@ -1,16 +1,16 @@
 import React from 'react'
 import MoviesData from './components/MoviesData'
-import { Container } from './MovieDataStyles'
+import { MainContent } from './MovieDataStyles'
 import Logo from './assets/LOGO.svg'
 import PlanetsData from './components/PlanetsData'
 
 function App () {
   return (
-    <Container>
+    <MainContent>
       <img src={Logo}/>
       <MoviesData/>
       <PlanetsData/>
-    </Container>
+    </MainContent>
   )
 }
 
