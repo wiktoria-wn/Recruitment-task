@@ -1,6 +1,6 @@
 import React from 'react'
 import MovieDetails from '../assets/data.json'
-import { Title, TitleValue, Icon } from '../MovieDataStyles'
+import { Title, TitleValue, Icon } from './styles/MovieDataStyles'
 import ArrowOpen from '../assets/ARROWOPEN.svg'
 import ArrowClose from '../assets/ARROWCLOSE.svg'
 import PlanetsData from './PlanetsData'
@@ -54,16 +54,16 @@ class MoviesData extends React.Component {
       <>
         {this.state.films.map(film => {
           return (
-              <>
-              <Title key={film.id} onClick={() => this.onSectionClick(film.id)}>
-                  <TitleValue>{film.title}</TitleValue>
+              <div key={film.id}>
+              <Title onClick={() => this.onSectionClick(film.id)}>
+                  <TitleValue key="film">{film.title}</TitleValue>
                   <Icon
                       src={imagesPath[this.getImageName(film.id)]}
                       alt="movie"
                   />
                 </Title>
                 {this.shouldDisplay(film.id) ? <PlanetsData planets={film.planets}/> : null}
-              </>
+              </div>
             )
         })}
       </>

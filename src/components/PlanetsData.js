@@ -1,6 +1,5 @@
-/* eslint-disable react/jsx-key */
 import React from 'react'
-import { Table, Row, Value } from '../PlanetsDataStyles'
+import { Table, Row, Value } from './styles/PlanetsDataStyles'
 
 class PlanetsData extends React.Component {
   render () {
@@ -18,7 +17,7 @@ class PlanetsData extends React.Component {
           </Row>
           {this.props.planets.map(planet => {
             return (
-              <Row>
+              <Row key={planet.id}>
                 <Value primary>{planet.name}</Value>
                 <Value>{planet.rotationPeriod}</Value>
                 <Value>{planet.orbitalPeriod}</Value>

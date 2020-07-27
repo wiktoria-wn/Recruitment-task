@@ -1,6 +1,6 @@
 import React from 'react'
 import MoviesData from './components/MoviesData'
-import { MainContent } from './MovieDataStyles'
+import { MainContent } from './components/styles/MovieDataStyles'
 import Logo from './assets/LOGO.svg'
 
 function App () {
