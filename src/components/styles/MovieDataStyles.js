@@ -15,12 +15,12 @@ export const Title = styled.div`
     justify-content: space-between;
     cursor: pointer;
 
-    @media (max-width: 375px){
+    @media (max-width: 740px){
         width: 292px;
         height: 38px;
         left: 37px;
         top: 272px;
-        margin: 10px auto;
+        margin: 10px auto 0;
         padding: 10px;
     }
 `

@@ -1,31 +1,35 @@
 import React from 'react'
-import { Table, Row, Value } from './styles/PlanetsDataStyles'
+import { Table, BodyRow, BodyValue, HeadSection, BodySection, HeadRow, HeadValue } from './styles/PlanetsDataStyles'
 
 class PlanetsData extends React.Component {
   render () {
     return (
       <>
         <Table>
-          <Row primary>
-            <Value  bordered primary>Planet Name</Value>
-            <Value bordered>Rotating period</Value>
-            <Value bordered>Orbital period</Value>
-            <Value bordered>Diameter</Value>
-            <Value bordered>Climate</Value>
-            <Value bordered>Surface water</Value>
-            <Value bordered>Population</Value>
-          </Row>
+          <HeadSection>
+          <HeadRow primary>
+            <HeadValue  bordered primary>Planet Name</HeadValue>
+            <HeadValue bordered>Rotating period</HeadValue>
+            <HeadValue bordered>Orbital period</HeadValue>
+            <HeadValue bordered>Diameter</HeadValue>
+            <HeadValue bordered>Climate</HeadValue>
+            <HeadValue bordered>Surface water</HeadValue>
+            <HeadValue bordered>Population</HeadValue>
+          </HeadRow>
+          </HeadSection>
           {this.props.planets.map(planet => {
             return (
-              <Row key={planet.id}>
-                <Value primary>{planet.name}</Value>
-                <Value>{planet.rotationPeriod}</Value>
-                <Value>{planet.orbitalPeriod}</Value>
-                <Value>{planet.diameter}</Value>
-                <Value>{planet.climates}</Value>
-                <Value>{planet.surfaceWater}</Value>
-                <Value>{planet.population}</Value>
-              </Row>
+              <BodySection>
+              <BodyRow key={planet.id}>
+                <BodyValue data-title="Planet Name" primary>{planet.name}</BodyValue>
+                <BodyValue data-title="Rotating period">{planet.rotationPeriod}</BodyValue>
+                <BodyValue data-title="Orbital period">{planet.orbitalPeriod}</BodyValue>
+                <BodyValue data-title="Diameter">{planet.diameter}</BodyValue>
+                <BodyValue data-title="Climate">{planet.climates}</BodyValue>
+                <BodyValue data-title="Surface water">{planet.surfaceWater}</BodyValue>
+                <BodyValue data-title="Population">{planet.population}</BodyValue>
+              </BodyRow>
+              </BodySection>
             )
           })}
         </Table>
